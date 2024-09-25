@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Copyright 2003-2019 Rustici Software, LLC All Rights Reserved. Rustici-Cross-Domain 3.4.0 2023-02-06T23:00:44+0000 b8b40cca20c42ee80603ebbef9f2be4aacf71413 -->
+<head>
+    <title>Rustici Software - Sample RXD Page</title>
+    <style>
+        hr {
+            margin: 15px 0px;
+        }
+    </style>
+    <script>
+        // RXD variable will be undefined if content is not dispatched to an LMS
+        var RXD = window.parent.RXD;
+    </script>
+</head>
+
+<body>
+    <p>
+        This is a piece of sample content served from a remote domain different than the domain of the launching LMS. This page is intended to show code examples of making use of the public interface of RXD when leveraging the contentAPI.html page.
+    </p>
+    <input type="button" value="GetStudentId" onclick="alert(RXD.GetStudentID());">
+    <br>
+    <input type="button" value="GetStudentName" onclick="alert(RXD.GetStudentName());">
+    <br>
+    <input type="button" value="GetLessonMode" onclick="alert(RXD.GetLessonMode());">
+    <br>
+    <input type="button" value="SetScore" onclick="RXD.SetScore(80, 100, 0);">
+    <br>
+    <input type="button" value="GetScore (after setting it)" onclick="alert(RXD.GetScore());">
+    <br>
+    <input type="button" value="SetPassed" onclick="RXD.SetPassed();">
+    <br>
+    <input type="button" value="SetFailed" onclick="RXD.SetFailed();">
+    <br>
+    <input type="button" value="SetComplete/ReachedEnd" onclick="RXD.SetReachedEnd();">
+    <br>
+    <input type="button" value="GetStatus (after setting it)" onclick="alert(RXD.GetStatus());">
+    <br>
+    <input type="button" value="SetSuspendData" onclick="RXD.SetSuspendData('test suspend data');">
+    <br>
+    <input type="button" value="GetSuspendData (after setting it)" onclick="alert(RXD.GetSuspendData());">
+    <br>
+    <input type="button" value="SetBookmark" onclick="RXD.SetBookmark('test bookmark');">
+    <br>
+    <input type="button" value="GetBookmark (after setting it)" onclick="alert(RXD.GetBookmark());">
+    <hr>
+    <input type="button" value="Record True False Interaction - 1" onclick="RXD.RecordTrueFalseInteraction('tf_123', true, true, true, 'true/false interaction description', 1, 1, 'lo_123');">
+    <br>
+    <input type="button" value="Record True False Interaction - 2" onclick="RXD.RecordTrueFalseInteraction('tf_456', false, false, true, 'true/false interaction description 2', 1, 1, 'lo_123');">
+    <br>
+    <input type="button" value="Record Multiple Choice Interaction" onclick="RXD.RecordMultipleChoiceInteraction('mc_123', {short: 'a', long: 'a is the first letter'}, true, null);">
+    <br>
+    <input type="button" value="Record FillIn Interaction" onclick="RXD.RecordFillInInteraction('abc125', 'correct-response', true, 'correct-response', 'fill In Description', 1, 0, 'strLearningObjectiveID');">
+    <br>
+    <input type="button" value="Record Matching Interaction" onclick="RXD.RecordMatchingInteraction('abc321', {source: 'source1', target: 'target1'}, true, {source: 'source1', target: 'target1'}, 'matching interaction description', 1, 0, 'strLearningObjectiveID');">
+    <br>
+    <input type="button" value="Record Performance Interaction" onclick="RXD.RecordPerformanceInteraction('abc543', 'response', true, 'response', 'performance interaction description', 1, 0, 'strLearningObjectiveID');">
+    <br>
+    <input type="button" value="Record Sequencing Interaction" onclick="RXD.RecordSequencingInteraction('abc654', {short: 'a', long: 'alpha'}, true, {short: 'a', long: 'alpha'}, 'sequencing interaction description', 1, 0, 'strLearningObjectiveID');">
+    <br>
+    <input type="button" value="Record Likert Interaction" onclick="RXD.RecordLikertInteraction('abc087', 'response', true, 'response', 'likert interaction description', 1, 0, 'strLearningObjectiveID');">
+    <br>
+    <input type="button" value="Record Numeric Interaction" onclick="RXD.RecordNumericInteraction('num_123', 1, true, 1, 'numeric interaction description', 1, 1, 'lo_123');">
+    <hr>
+    <p>
+        Determine the Account ID from query parameter.
+    </p>
+    <input type="button" value="Account ID" onclick="alert(new URLSearchParams(window.parent.location.search).get('accountId'));">
+    <hr>
+    <input type="button" value="ConcedeControl (Exit Course)" onclick="RXD.ConcedeControl();">
+</body>
+</html>
