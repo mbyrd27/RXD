@@ -13,6 +13,14 @@
         // RXD variable will be undefined if content is not dispatched to an LMS
         var RXD = window.parent.RXD;
     </script>
+    <script>
+        function genSuspend() {
+            var myString = '12345';
+            var repeatedString = myString.repeat(1000);
+            return repeatedString;
+        }
+        
+    </script>
 </head>
 
 <body>
@@ -37,7 +45,7 @@
     <br>
     <input type="button" value="GetStatus (after setting it)" onclick="alert(RXD.GetStatus());">
     <br>
-    <input type="button" value="SetSuspendData" onclick="RXD.SetSuspendData('12345');">
+    <input type="button" value="SetSuspendData" onclick="RXD.SetSuspendData(genSuspend());">
     <br>
     <input type="button" value="GetSuspendData (after setting it)" onclick="alert(RXD.GetSuspendData());">
     <br>
