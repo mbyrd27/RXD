@@ -41,7 +41,11 @@
     <br>
     <input type="button" value="GetSuspendData (after setting it)" onclick="alert(RXD.GetSuspendData());">
     <br>
-    <input type="button" value="SetBookmark" onclick="RXD.SetBookmark('test bookmark');">
+    <input type="button" value="SetBookmark" onclick="RXD.SetBookmark("{
+        "name": "blah",
+        "age": 32
+    }"
+    );">
     <br>
     <input type="button" value="GetBookmark (after setting it)" onclick="alert(RXD.GetBookmark());">
     <hr>
