@@ -44,12 +44,19 @@
 
         function loadFrames () {
             var startPath = getQueryStringValue("contentUrl", document.location.search);
+            // Force a cache clear with a unique timestamp
+            var dateNow = Date.now();
+            // Determine the separator to use with the new parameter
+            var separator = startPath.indexOf('?') !== -1 ? '&' : '?';
+            // Define the final path
+            var finalPath = startPath + separator + "cb=" + dateNow;
+            
 
             //
             // This frame goes to the actual real content, that content should access
             // the RXD API via `window.parent`
             //
-            document.getElementById("contentRelay").setAttribute("src", startPath);
+            document.getElementById("contentRelay").setAttribute("src", finalPath);
 
             RXD.Initialize();
         }
