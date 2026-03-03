@@ -15,7 +15,7 @@
     </script>
     <script>
         function showCustomizedAccountId() {
-            var customParamUrl = new URLSearchParams(window.location.search).get('cp');
+            var customParamUrl = new URLSearchParams(window.parent.location.search).get('cp');
             var xhttp = new XMLHttpRequest();
 
             xhttp.open("GET", customParamUrl, true);
