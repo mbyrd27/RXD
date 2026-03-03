@@ -13,6 +13,25 @@
         // RXD variable will be undefined if content is not dispatched to an LMS
         var RXD = window.parent.RXD;
     </script>
+    <script>
+        function showCustomizedAccountId() {
+            var customParamUrl = new URLSearchParams(window.location.search).get('cp');
+            var xhttp = new XMLHttpRequest();
+
+            xhttp.open("GET", customParamUrl, true);
+            xhttp.send();
+
+            xhttp.onreadystatechange = function() {
+
+            if (this.readyState == 4 && this.status == 200) {
+                // wait for the response, then parse the response as JSON
+                var cpData = JSON.parse(xhttp.responseText);
+                var innerData = JSON.parse(cpData.custom_param);
+                alert(innerData.customAccountId);  
+              }
+            }
+        };
+    </script>
 </head>
 
 <body>
@@ -64,9 +83,9 @@
     <input type="button" value="Record Numeric Interaction" onclick="RXD.RecordNumericInteraction('num_123', 1, true, 1, 'numeric interaction description', 1, 1, 'lo_123');">
     <hr>
     <p>
-        Determine the Account ID from query parameter.
+        Determine the Customized Account ID from Custom Launch Data.
     </p>
-    <input type="button" value="Account ID" onclick="alert(new URLSearchParams(window.parent.location.search).get('accountId'));">
+    <input type="button" value="Account ID" onclick="showCustomizedAccountId()">
     <hr>
     <input type="button" value="ConcedeControl (Exit Course)" onclick="RXD.ConcedeControl();">
 </body>
